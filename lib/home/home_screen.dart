@@ -15,37 +15,19 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  /// The counter that gets incremented each time the user taps on the screen.
-  ///
-  /// This starts at 1, and each tap adds 1 to this value. The counter also
-  /// affects how the background color is displayed (solid or gradient).
-  int _counter = 1;
-
-  /// A multiplier used to determine if the counter is a multiple of 5, which
-  /// will trigger the gradient background effect.
+  int _counter = 0;
   final int _gradientMultiple = 5;
-
-  /// A multiplier used to determine if the counter is a multiple of 2, which
-  /// will affect the direction of the gradient (either horizontal or vertical).
   final int _gradientSymmetricMultiple = 2;
-
-  /// A flag that checks if the background color is dark or light, which helps
-  /// us decide what color the text should be for better readability.
   bool isDarkColor = false;
 
   // MARK: - Color generation with random RGB values.
   // We use 256^3 possible colors, but if we want even more variation,
   // we could include an alpha channel to generate 256^4 unique colors.
 
-  /// Generates a random color by randomly picking red, green, and blue values.
+  /// Generates a random RGB color
   ///
   /// It also checks whether the color is light or dark using a brightness
   /// calculation, which helps us adjust the text color accordingly.
-  ///
-  /// Example:
-  /// ```dart
-  /// Color randomColor = _getRandomColor();
-  /// ```
   Color _getRandomColor() {
     final random = Random();
     final randomRed = random.nextInt(256);
@@ -66,13 +48,7 @@ class _HomeScreenState extends State<HomeScreen> {
     isDarkColor = grayScale > greyScaleDarkPoint;
   }
 
-  /// A helper method that checks if the counter is a multiple of a given number.
-  ///
-  /// This is used to decide when to apply a gradient background or when to show
-  /// a solid color instead. For example, if the counter is a multiple of 5,
-  /// we show a gradient background.
-  ///
-  /// [value] is the number to check divisibility against.
+  /// A helper method that show a gradient background for every 5 click
   bool _multipleOf(int value) {
     return (_counter % value == 0);
   }
